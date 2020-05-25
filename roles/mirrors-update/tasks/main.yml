@@ -12,18 +12,22 @@
       pacman:
         name: reflector
         state: present
-    # - name: "Create backup copy of mirror-list"
-    #   copy:
-    #     src: "{{ mirrors_file }}"
-    #     dest: "{{ mirrors_bkup }}"
-    #     force: yes
-    # - name: "Find fastest servers, and replace the current mirror-list"
-    #   command: reflector --country 'United States'
-    #                       --latest '200'
-    #                       --protocol 'http'
-    #                       --protocol 'https'
-    #                       --sort 'rate'
-    #                       --save {{ mirrors_file|quote }}
+    - name: "Create backup copy of mirror-list"
+      copy:
+        src: "{{ mirrors_file }}"
+        dest: "{{ mirrors_bkup }}"
+        force: yes
+    - name: "Find fastest servers, and replace the current mirror-list"
+      command: reflector --country 'United States'
+                          --latest '200'
+                          --protocol 'http'
+                          --protocol 'https'
+                          --sort 'rate'
+                          --save {{ mirrors_file|quote }}
+    - name: "Sync pacman package database (with -Syy)"
+      pacman:
+        update_cache: yes
+        force: yes
   vars:
     mirrors_file: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_file }}"
     mirrors_bkup: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_bkup }}"
