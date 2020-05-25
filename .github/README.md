@@ -58,19 +58,25 @@ for the Samsung 860 Pro at /dev/sdb:
 
 ## Configuration Steps
 
-1. Clone project into a local project directory:
+1. As required: use `pacman` to install `git` and `ansible` packages:
+
+   ```shell
+   $ pacman -S git ansible
+   ```
+
+2. Clone project into a local project directory:
 
    ```shell
    $ git clone https://github.com/digimokan/ans-configure-htpc-nuc5cpyh.git
    ```
 
-2. Change to the local project directory:
+3. Change to the local project directory:
 
    ```shell
    $ cd ans-configure-htpc-nuc5cpyh
    ```
 
-3. Run the _ansible_ configuration script:
+4. Run the _ansible_ configuration script:
 
    ```shell
    $ ansible-playbook -i hosts -e '{"user_var_install_devices":["sda"]}' playbook.yml
