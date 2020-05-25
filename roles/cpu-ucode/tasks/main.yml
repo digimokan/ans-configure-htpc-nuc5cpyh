@@ -1,0 +1,25 @@
+- name: "Abort if GRUB bootloader not installed"
+  block:
+    - name: "Check if /etc/grub/grub.cfg exists, indicating GRUB bootloader"
+      stat:
+        path: "/etc/grub/grub.cfg"
+      register: grub_cfg_file
+    - fail:
+        msg: "/etc/grub/grub.cfg not present: GRUB required to set up ucode"
+      when: grub_cfg_file.stat.exists == false
+
+- name: "Set the cpu-type play fact"
+  set_fact:
+    cpu_type: "{{ 'amd' if amd_cpu|length > 0 else 'intel' if intel_cpu|length > 0 else 'unknown' }}"
+  vars:
+    intel_cpu: "{{ ansible_processor | select('match', 'Intel') | list }}"
+    amd_cpu: "{{ ansible_processor | select('match', 'AMD') | list }}"
+
+- name: "Install microcode-updates-package according to CPU type"
+  block:
+    - name: "Install Intel/AMD cpu-microcode-updates package"
+      pacman:
+        name: "{{ cpu_type }}-ucode"
+        state: present
+  when: cpu_type != "unknown"
+

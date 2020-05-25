@@ -4,4 +4,7 @@
     - name: "Update pacman mirror-server-list, as required"
       include_role:
         name: mirrors-update
+    - name: "Configure Intel/AMD CPU-microcode updates to apply with initramfs"
+      include_role:
+        name: cpu-ucode
 
