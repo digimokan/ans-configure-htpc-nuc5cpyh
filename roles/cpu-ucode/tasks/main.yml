@@ -1,12 +1,14 @@
 - name: "Abort if GRUB bootloader not installed"
   block:
-    - name: "Check if /etc/grub/grub.cfg exists, indicating GRUB bootloader"
+    - name: "Check if {{ grub_cfg_path }} exists, indicating GRUB bootloader"
       stat:
-        path: "/etc/grub/grub.cfg"
+        path: "{{ grub_cfg_path }}"
       register: grub_cfg_file
     - fail:
-        msg: "/etc/grub/grub.cfg not present: GRUB required to set up ucode"
+        msg: "{{ grub_cfg_path }} not present: GRUB required to set up ucode"
       when: grub_cfg_file.stat.exists == false
+  vars:
+    grub_cfg_path: "/boot/grub/grub.cfg"
 
 - name: "Set the cpu-type play fact"
   set_fact:
