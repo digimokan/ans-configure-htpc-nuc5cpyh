@@ -29,7 +29,7 @@
       lineinfile:
         path: "{{ grub_cfg_path }}"
         regexp: 'initrd \${(.*)}$'
-        line: "initrd {{ ucode_updates }} \1"
+        line: 'initrd {{ ucode_updates }} \1'
         backrefs: yes
         state: present
   vars:
