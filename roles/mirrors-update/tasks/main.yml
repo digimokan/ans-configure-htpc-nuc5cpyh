@@ -26,5 +26,7 @@
   vars:
     mirrors_file: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_file }}"
     mirrors_bkup: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_bkup }}"
+  become: true
+  become_user: root
   when: mirrors_found.matched > 0
 

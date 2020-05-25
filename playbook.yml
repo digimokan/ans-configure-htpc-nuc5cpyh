@@ -2,8 +2,6 @@
   connection: local
   tasks:
     - name: "Update pacman mirror-server-list, as required"
-      become: true
-      become_user: root
       include_role:
         name: mirrors-update
 
