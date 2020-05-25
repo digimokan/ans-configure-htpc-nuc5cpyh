@@ -19,11 +19,18 @@
       pacman:
         name: "{{ cpu_type }}-ucode"
         state: present
-    - name: "Add GRUB variable for the microcode-updates image in /boot"
+    - name: "Add grub.cfg variable for the microcode-updates image in /boot"
       lineinfile:
         path: "{{ grub_cfg_path }}"
         line: "set ucode_updates=\"{{ ucode_updates }}\""
         insertafter: '^# select initramfs to boot$'
+        state: present
+    - name: "Set grub.cfg to load microcode-updates image before initramfs"
+      lineinfile:
+        path: "{{ grub_cfg_path }}"
+        regexp: 'initrd \${(.*)}$'
+        line: "initrd {{ ucode_updates }} \1"
+        backrefs: yes
         state: present
   vars:
     grub_cfg_path: "/boot/grub/grub.cfg"
