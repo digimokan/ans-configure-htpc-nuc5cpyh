@@ -1,15 +1,3 @@
-- name: "Abort if GRUB bootloader not installed"
-  block:
-    - name: "Check if {{ grub_cfg_path }} exists, indicating GRUB bootloader"
-      stat:
-        path: "{{ grub_cfg_path }}"
-      register: grub_cfg_file
-    - fail:
-        msg: "{{ grub_cfg_path }} not present: GRUB required to set up ucode"
-      when: grub_cfg_file.stat.exists == false
-  vars:
-    grub_cfg_path: "/boot/grub/grub.cfg"
-
 - name: "Set the cpu-type play fact"
   set_fact:
     cpu_type: "{{ 'amd' if amd_cpu|length > 0 else 'intel' if intel_cpu|length > 0 else 'unknown' }}"
@@ -17,11 +5,28 @@
     intel_cpu: "{{ ansible_processor | select('match', 'Intel') | list }}"
     amd_cpu: "{{ ansible_processor | select('match', 'AMD') | list }}"
 
-- name: "Install microcode-updates-package according to CPU type"
+- name: "Install microcode-updates and load early (before initramfs) with GRUB"
   block:
-    - name: "Install Intel/AMD cpu-microcode-updates package"
+    - name: "Check if {{ grub_cfg_path }} exists, indicating GRUB bootloader"
+      stat:
+        path: "{{ grub_cfg_path }}"
+      register: grub_cfg_file
+    - name: "Abort if GRUB bootloader not installed"
+      fail:
+        msg: "{{ grub_cfg_path }} not present: GRUB required to set up ucode"
+      when: grub_cfg_file.stat.exists == false
+    - name: "Install Intel/AMD CPU microcode-updates package"
       pacman:
         name: "{{ cpu_type }}-ucode"
         state: present
+    - name: "Add GRUB variable for the microcode-updates image in /boot"
+      lineinfile:
+        path: "{{ grub_cfg_path }}"
+        line: "set ucode_updates=\"{{ ucode_updates }}\""
+        insertafter: '^# select initramfs to boot$'
+        state: present
+  vars:
+    grub_cfg_path: "/boot/grub/grub.cfg"
+    ucode_updates: "/boot/{{ cpu_type }}-ucode.img"
   when: cpu_type != "unknown"
 
