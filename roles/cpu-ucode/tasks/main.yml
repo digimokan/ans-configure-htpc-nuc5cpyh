@@ -28,7 +28,7 @@
     - name: "Set grub.cfg to load microcode-updates image before initramfs"
       replace:
         path: "{{ grub_cfg_path }}"
-        regexp: '(.*)initrd (\${.*})$'
+        regexp: '^(\s*)initrd (\${\w+_initramfs})$'
         replace: '\1initrd ${ucode_updates} \2'
   vars:
     grub_cfg_path: "/boot/grub/grub.cfg"
