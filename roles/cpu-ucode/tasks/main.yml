@@ -22,6 +22,7 @@
     - name: "Add grub.cfg variable for the microcode-updates image in /boot"
       lineinfile:
         path: "{{ grub_cfg_path }}"
+        regexp: '^set ucode_updates='
         line: "set ucode_updates=\"{{ ucode_updates_img }}\""
         insertafter: '^# select initramfs to boot$'
         state: present
