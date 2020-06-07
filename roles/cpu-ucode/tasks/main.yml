@@ -32,6 +32,6 @@
         replace: '\1initrd ${ucode_updates} \2'
   vars:
     grub_cfg_path: "/boot/grub/grub.cfg"
-    ucode_updates_img: "/boot/{{ cpu_type }}-ucode.img"
+    ucode_updates_img: "/ROOT/default/@/boot/{{ cpu_type }}-ucode.img"
   when: cpu_type != "unknown"
 
