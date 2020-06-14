@@ -92,7 +92,6 @@ a variables file, like this example:
    admin_group_def_group_name: "admin"
    admin_user_def_user_name: "admin"
    admin_user_def_pass_salt: "secret123"
-   admin_user_prompt_user_password: "mypass123"
    ```
 
 Then you can use `vars_file.txt` when running the playbook:
