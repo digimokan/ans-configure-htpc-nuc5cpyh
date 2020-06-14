@@ -16,8 +16,8 @@
 - name: "Create new admin-user, set password using user-input + derived salt"
   user:
     name: "{{ admin_user_def_user_name }}"
-    password: "{{ new_password.user_input | password_hash(admin_user_var_pass_hash_alg, 65534 | random(seed=ansible_hostname) | string) }}"
-    update_password: on_create
+    # password: "{{ new_password.user_input | password_hash(admin_user_var_pass_hash_alg, 65534 | random(seed=ansible_hostname) | string) }}"
+    password: "{{ new_password.user_input | password_hash(admin_user_var_pass_hash_alg, admin_user_def_pass_salt) }}"
   become: true
   become_user: root
   listen: "new admin-user password"
