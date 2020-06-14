@@ -1,0 +1,21 @@
+- name: "Set admin-user password"
+  block:
+    - debug:
+        var=inventory_hostname
+    - debug:
+        var=ansible_hostname
+    - debug:
+        var=hostvars
+    - name: "Prompt for real-time input for the new password"
+      pause:
+        prompt: "Enter the new admin-user password:"
+        echo: yes
+        register: new_password
+    - name: "Set admin-user password, using user-input + hostname-derived salt"
+      user:
+        name: "{{ admin_user_def_user_name }}"
+        password: "{{ new_password.user_input | password_hash(admin_user_var_pass_hash_alg, 65534 | random(seed=inventory_hostname) | string) }}"
+        update_password: on_create
+        become: true
+        become_user: root
+

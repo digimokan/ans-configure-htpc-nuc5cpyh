@@ -1,26 +1,16 @@
-- name: "Check if admin-user already exists"
+- name: "Check if admin-user exists on the system"
   command: getent passwd {{ admin_user_def_user_name|quote }}
-  register: admin_user_exists
-  changed_when: admin_user_exists.rc > 2
-  failed_when: admin_user_exists.rc > 2
+  # NOTE: getent returns 0 when key bound, and 2 when key not found in database
+  changed_when: admin_user_exists.rc = 2
+  failed_when: admin_user_exists.rc != 0 and admin_user_exists.rc != 2
+  notify: "Set admin-user password"
 
-- name: "If admin-user not exist, set password-creation action for first login"
-  block:
-    - name: "Create admin-user"
-      user:
-        name: "{{ admin_user_def_user_name }}"
-    - name: "Unlock password and set password to empty"
-      command: passwd -d {{ admin_user_def_user_name|quote }}
-    - name: "Set password to \"expired\""
-      command: chage -d 0 {{ admin_user_def_user_name|quote }}
-  when: admin_user_exists.rc == 2
-
-# - name: "Configure the admin-user account"
-#   user:
-#     name: "{{ admin_user_def_user_name }}"
-#     # groups:
-#     #   - "{{ admin_group_def_group_name }}"
-#     # append: yes
-#   become: true
-#   become_user: root
+- name: "Configure the admin-user account"
+  user:
+    name: "{{ admin_user_def_user_name }}"
+    groups:
+      - "{{ admin_group_def_group_name }}"
+    append: yes
+  become: true
+  become_user: root
 
