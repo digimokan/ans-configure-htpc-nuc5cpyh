@@ -9,10 +9,10 @@
     - name: "Create admin-user"
       user:
         name: "{{ admin_user_def_user_name }}"
-    # - name: "Unlock password and set password to empty"
-    #   command: passwd -d {{ admin_user_def_user_name|quote }}
-    # - name: "Set password to \"expired\""
-    #   command: chage -d 0 {{ admin_user_def_user_name|quote }}
+    - name: "Unlock password and set password to empty"
+      command: passwd -d {{ admin_user_def_user_name|quote }}
+    - name: "Set password to \"expired\""
+      command: chage -d 0 {{ admin_user_def_user_name|quote }}
   when: admin_user_exists.rc == 2
 
 # - name: "Configure the admin-user account"
