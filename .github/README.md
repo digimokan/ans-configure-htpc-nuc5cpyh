@@ -101,8 +101,8 @@ Then you can use `vars_file.txt` when running the playbook:
 
 See the role `vars` files for a full listing of available vars:
 
-  * [admin-group](#roles/admin-group/defaults/main.yml)
-  * [admin-user](#roles/admin-user/defaults/main.yml)
+  * [admin-group](roles/admin-group/defaults/main.yml)
+  * [admin-user](roles/admin-user/defaults/main.yml)
 
 ## Source Code Layout
 
