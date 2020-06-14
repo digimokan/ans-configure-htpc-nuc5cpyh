@@ -4,18 +4,18 @@
   changed_when: admin_user_exists.rc > 2
   failed_when: admin_user_exists.rc > 2
 
-- name: "If admin-user not exist, set password-creation action for first login"
-  block:
-    - name: "Create admin-user"
-      user:
-        name: "{{ admin_user_def_user_name }}"
-    - name: "Unlock password and set password to empty"
-      command: passwd -d {{ admin_user_def_user_name|quote }}
-    - name: "Set password to \"expired\""
-      command: chage -d 0 {{ admin_user_def_user_name|quote }}
-  become: true
-  become_user: root
-  when: admin_user_exists.rc == 2
+# - name: "If admin-user not exist, set password-creation action for first login"
+#   block:
+#     - name: "Create admin-user"
+#       user:
+#         name: "{{ admin_user_def_user_name }}"
+#     - name: "Unlock password and set password to empty"
+#       command: passwd -d {{ admin_user_def_user_name|quote }}
+#     - name: "Set password to \"expired\""
+#       command: chage -d 0 {{ admin_user_def_user_name|quote }}
+#   become: true
+#   become_user: root
+#   when: admin_user_exists.rc == 2
 
 - name: "Configure the admin-user account"
   user:
