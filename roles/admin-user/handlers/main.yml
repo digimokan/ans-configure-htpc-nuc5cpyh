@@ -4,9 +4,6 @@
 - debug:
     var=ansible_hostname
   listen: "new admin-user password"
-- debug:
-    var=hostvars
-  listen: "new admin-user password"
 
 - name: "Prompt for real-time input for the new password"
   pause:
