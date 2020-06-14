@@ -9,6 +9,10 @@
   register: new_password
   listen: "new admin-user password"
 
+- debug:
+    var=new_password.user_input
+  listen: "new admin-user password"
+
 - name: "Create new admin-user, set password using user-input + derived salt"
   user:
     name: "{{ admin_user_def_user_name }}"
