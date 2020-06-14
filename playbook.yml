@@ -10,6 +10,7 @@
     - name: "Add and configure admin group"
       include_role:
         name: admin-group
+        public: yes
     - name: "Add and configure admin user"
       include_role:
         name: admin-user
