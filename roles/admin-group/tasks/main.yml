@@ -2,6 +2,6 @@
   group:
     name: "{{ admin_group_def_group_name }}"
     state: present
-    become: true
-    become_user: root
+  become: true
+  become_user: root
 
