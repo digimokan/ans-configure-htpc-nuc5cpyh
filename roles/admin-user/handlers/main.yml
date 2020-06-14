@@ -4,7 +4,7 @@
 
 - name: "Prompt for real-time input for the new password"
   pause:
-    prompt: "Enter the new admin-user password:"
+    prompt: "Enter the new admin-user password"
     echo: yes
   register: new_password
   listen: "new admin-user password"
@@ -14,7 +14,7 @@
     name: "{{ admin_user_def_user_name }}"
     password: "{{ new_password.user_input | password_hash(admin_user_var_pass_hash_alg, 65534 | random(seed=ansible_hostname) | string) }}"
     update_password: on_create
-    become: true
-    become_user: root
+  become: true
+  become_user: root
   listen: "new admin-user password"
 
