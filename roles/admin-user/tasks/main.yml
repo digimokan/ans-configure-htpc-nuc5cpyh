@@ -17,12 +17,12 @@
   become_user: root
   when: admin_user_exists.rc == 2
 
-- name: "Add the admin-user account to the system, and configure it"
+- name: "Configure the admin-user account"
   user:
     name: "{{ admin_user_def_user_name }}"
-    groups:
-      - "{{ admin_group_def_group_name }}"
-    append: yes
+    # groups:
+    #   - "{{ admin_group_def_group_name }}"
+    # append: yes
   become: true
   become_user: root
 
