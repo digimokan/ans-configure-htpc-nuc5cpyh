@@ -1,6 +1,7 @@
 - name: "Check if admin-user already exists"
   command: getent passwd {{ admin_user_def_user_name|quote }}
   register: admin_user_exists
+  changed_when: admin_user_exists.rc > 2
   failed_when: admin_user_exists.rc > 2
 
 - name: "If admin-user not exist, set password-creation action for first login"
