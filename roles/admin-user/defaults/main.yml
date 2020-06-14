@@ -5,6 +5,3 @@
 # user-name of the admin-user
 admin_user_def_user_name: "admin"
 
-# salt for admin-user password (security: change this, and don't store publicly)
-admin_user_def_pass_salt: "mypasssalt"
-

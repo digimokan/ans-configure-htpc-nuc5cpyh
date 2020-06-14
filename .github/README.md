@@ -79,7 +79,7 @@ for the Samsung 860 Pro at /dev/sdb:
 4. Run the _ansible_ configuration script:
 
    ```shell
-   $ ansible-playbook -i hosts -e '{"admin_user_def_pass_salt":"secret123"}' playbook.yml
+   $ ansible-playbook -i hosts -e '{"admin_user_def_user_name":"htpc_user"}' playbook.yml
    ```
 
 ## Full Usage / Options
@@ -90,8 +90,7 @@ a variables file, like this example:
    ```
    # vars_file.txt
    admin_group_def_group_name: "admin"
-   admin_user_def_user_name: "admin"
-   admin_user_def_pass_salt: "secret123"
+   admin_user_def_user_name: "htpc_user"
    ```
 
 Then you can use `vars_file.txt` when running the playbook:
