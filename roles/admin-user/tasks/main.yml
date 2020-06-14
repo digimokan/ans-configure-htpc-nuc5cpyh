@@ -1,8 +1,24 @@
+- name: "Check if admin-user already exists"
+  command: getent passwd {{ admin_user_def_user_name|quote }}
+  register: admin_user_exists
+  ignore_errors: yes
+
+- name: "If admin-user not exist, set password-creation action for first login"
+  block:
+    - name: "Create admin-user"
+      user:
+        name: "{{ admin_user_def_user_name }}"
+    - name: "Unlock password and set password to empty"
+      command: passwd -d {{ admin_user_def_user_name|quote }}
+    - name: "Set password to \"expired\""
+      command: chage -d 0 {{ admin_user_def_user_name|quote }}
+  when: admin_user_exists.rc == 0
+
 - name: "Add the admin-user account to the system, and configure it"
   user:
     name: "{{ admin_user_def_user_name }}"
-    password: "{{ admin_user_prompt_user_password | password_hash(admin_user_var_pass_hash_alg, admin_user_def_pass_salt) }}"
-    update_password: on_create
+    # password: "{{ admin_user_prompt_user_password | password_hash(admin_user_var_pass_hash_alg, admin_user_def_pass_salt) }}"
+    # update_password: on_create
     groups:
       - "{{ admin_group_def_group_name }}"
     append: yes
