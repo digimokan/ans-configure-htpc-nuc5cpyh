@@ -1,4 +1,4 @@
-- name: "Set admin-user password"
+- name: "Create a new admin-user, and set the password"
   block:
     - debug:
         var=inventory_hostname
@@ -18,4 +18,5 @@
         update_password: on_create
         become: true
         become_user: root
+  listen: "set admin-user password"
 

@@ -4,7 +4,7 @@
   register: admin_user_exists
   changed_when: admin_user_exists.rc == 2
   failed_when: admin_user_exists.rc != 0 and admin_user_exists.rc != 2
-  notify: "Set admin-user password"
+  notify: "set admin-user password"
 
 - name: "Configure the admin-user account"
   user:
