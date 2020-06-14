@@ -1,0 +1,7 @@
+################################################################################
+# var variables: may be overriden, but serve mostly as constants
+################################################################################
+
+# the password hashing algorithm to use for the user's password
+admin_user_var_pass_hash_alg: "sha512"
+

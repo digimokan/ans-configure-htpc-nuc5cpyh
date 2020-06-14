@@ -1,0 +1,9 @@
+- name: "Add the admin-user account to the system, and configure it"
+  user:
+    name: "{{ admin_user_def_user_name }}"
+    password: "{{ admin_user_prompt_user_password | password_hash(admin_user_var_pass_hash_alg, admin_user_def_pass_salt) }}"
+    update_password: on_create
+    groups:
+      - "{{ admin_group_def_group_name }}"
+    append: yes
+

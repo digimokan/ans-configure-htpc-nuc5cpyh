@@ -7,4 +7,16 @@
     - name: "Configure Intel/AMD CPU-microcode updates to apply with initramfs"
       include_role:
         name: cpu-ucode
+    - name: "Add and configure admin group"
+      include_role:
+        name: admin-group
+    - name: "Add and configure admin user"
+      include_role:
+        name: admin-user
+  vars_prompt:
+    - name: admin_user_prompt_user_password
+      prompt: "Enter the admin-user password"
+      private: yes
+      confirm: yes
+      when: admin_user_prompt_user_password is not defined
 

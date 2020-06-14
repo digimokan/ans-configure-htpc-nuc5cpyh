@@ -79,33 +79,43 @@ for the Samsung 860 Pro at /dev/sdb:
 4. Run the _ansible_ configuration script:
 
    ```shell
-   $ ansible-playbook -i hosts -e '{"user_var_install_devices":["sda"]}' playbook.yml
+   $ ansible-playbook -i hosts -e '{"admin_user_def_pass_salt":"secret123"}' playbook.yml
    ```
 
 ## Full Usage / Options
 
-```
-<cut and paste help menu here>
-```
+Instead of specifying variables on the command line (with `-e`), you can create
+a variables file, like this example:
+
+   ```
+   # vars_file.txt
+   admin_group_def_group_name: "admin"
+   admin_user_def_user_name: "admin"
+   admin_user_def_pass_salt: "secret123"
+   admin_user_prompt_user_password: "mypass123"
+   ```
+
+Then you can use `vars_file.txt` when running the playbook:
+
+   ```shell
+   $ ansible-playbook -i hosts -e '@vars_file.txt' playbook.yml
+   ```
+
+See the role `vars` files for a full listing of available vars:
+
+  * [admin-group](#../roles/admin-group/defaults/main.yml)
+  * [admin-user](#../roles/admin-user/defaults/main.yml)
 
 ## Source Code Layout
 
 ```
 ├─┬ ans-configure-htpc-nuc5cpyh/
 │ │
-│ ├── group_vars/         # required user-vars, and constant playbook vars
-│ │
 │ ├─┬ roles/
-│ │ ├── arch-install/     # install Arch to disk(s), and configure
-│ │ ├── archiso-config/   # performs initial config of the live USB OS
-│ │ ├── dataset-creation/ # creates reasonable set of system/user datasets
-│ │ ├── disk-format/      # formats install disk(s) with boot/zfs partitions
-│ │ ├── grub-install/     # install GRUB bootloader to boot partition(s)
-│ │ ├── play-fact-set/    # initial calc/set of play-wide vars
-│ │ ├── pool-creation/    # creates zpool on the install disk(s)
-│ │ ├── post-install/     # clean up and finalize the installation
-│ │ ├── user-vars-chk/    # checks that required user_var_* vars are defined
-│ │ └── zroot-config/     # configures zpool for use after adding datasets
+│ │ ├── admin-group/      # create an admin group for the system
+│ │ ├── admin-user/       # create a admin user for the system
+│ │ ├── cpu-ucode/        # configure intel/amd cpu microcode to load at boot
+│ │ └── mirrors-update/   # update pacman mirrorlist file, if it's too old
 │ │
 │ ├── ansible.cfg         # play-wide ansible meta-config
 │ ├── hosts               # ansible inventory (configured for local host)

@@ -1,9 +1,9 @@
 - name: "Check mirror-server-list file by its modified-time"
   find:
-    paths: "{{ mirrors_update_mirrors_dir }}"
+    paths: "{{ mirrors_update_var_mirrors_dir }}"
     patterns: '^mirrorlist$'
     use_regex: yes
-    age: "{{ mirrors_update_age }}"
+    age: "{{ mirrors_update_var_age }}"
   register: mirrors_found
 
 - name: "Update mirror-server-list if it is too old"
@@ -29,8 +29,8 @@
         update_cache: yes
         force: yes
   vars:
-    mirrors_file: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_file }}"
-    mirrors_bkup: "{{ mirrors_update_mirrors_dir }}/{{ mirrors_update_mirrors_bkup }}"
+    mirrors_file: "{{ mirrors_update_var_mirrors_dir }}/{{ mirrors_update_var_mirrors_file }}"
+    mirrors_bkup: "{{ mirrors_update_var_mirrors_dir }}/{{ mirrors_update_var_mirrors_bkup }}"
   become: true
   become_user: root
   when: mirrors_found.matched > 0
