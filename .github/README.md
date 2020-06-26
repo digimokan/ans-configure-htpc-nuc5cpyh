@@ -4,7 +4,7 @@ _ansible_ script that configures an Arch Linux system for use as an
 [HTPC](https://en.wikipedia.org/wiki/Home_theater_PC).
 
 [![Release](https://img.shields.io/github/release/digimokan/ans-configure-htpc-nuc5cpyh.svg?label=release)](https://github.com/digimokan/ans-configure-htpc-nuc5cpyh/releases/latest "Latest Release Notes")
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.txt "Project License")
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.md "Project License")
 
 ## Table Of Contents
 
