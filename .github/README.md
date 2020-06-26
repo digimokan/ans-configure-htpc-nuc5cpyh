@@ -76,10 +76,10 @@ for the Samsung 860 Pro at /dev/sdb:
    $ cd ans-configure-htpc-nuc5cpyh
    ```
 
-4. Run the _ansible_ configuration script:
+4. Run the _ansible_ configuration script (passing options to the `ansible-playbook` cmd):
 
    ```shell
-   $ ansible-playbook -i hosts -e '{"admin_user_def_user_name":"htpc_user"}' playbook.yml
+   $ ./configure -e '{"admin_user_def_user_name":"htpc_user"}'
    ```
 
 ## Full Usage / Options
@@ -96,7 +96,7 @@ a variables file, like this example:
 Then you can use `vars_file.txt` when running the playbook:
 
    ```shell
-   $ ansible-playbook -i hosts -e '@vars_file.txt' playbook.yml
+   $ ./configure -e '@vars_file.txt'
    ```
 
 See the role `vars` files for a full listing of available vars:
@@ -116,8 +116,10 @@ See the role `vars` files for a full listing of available vars:
 │ │ └── mirrors-update/   # update pacman mirrorlist file, if it's too old
 │ │
 │ ├── ansible.cfg         # play-wide ansible meta-config
+│ ├── configure.sh        # download roles (requirements.yml), run playbook.yml
 │ ├── hosts               # ansible inventory (configured for local host)
-│ └── playbook.yml        # main ansible playbook
+│ ├── playbook.yml        # main ansible playbook
+│ └── requirements.yml    # list of roles (on github/galaxy) to download
 │
 ```
 

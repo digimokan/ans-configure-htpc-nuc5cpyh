@@ -4,5 +4,5 @@
 ansible-galaxy install --role-file requirements.yml --roles-path ./roles || exit 1
 
 # run the playbook
-ansible-playbook -i hosts playbook.yml
+ansible-playbook -i hosts "${@}" playbook.yml
 
