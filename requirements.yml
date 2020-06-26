@@ -1,0 +1,4 @@
+- src: https://github.com/digimokan/ans-role-cpu-microcode
+  version: master
+  name: cpu-ucode
+
