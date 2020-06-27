@@ -2,3 +2,7 @@
   version: master
   name: cpu-ucode
 
+- src: https://github.com/digimokan/ans-role-update-repo-servers
+  version: master
+  name: mirrors-update
+

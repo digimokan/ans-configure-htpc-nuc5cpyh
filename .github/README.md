@@ -112,6 +112,7 @@ See the role `vars` files for a full listing of available vars.
 ### External/Downloaded Roles
 
 * [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode/blob/master/defaults/main.yml)
+* [mirrors-update](https://github.com/digimokan/ans-role-update-repo-servers/blob/master/defaults/main.yml)
 
 ## Source Code Layout
 
