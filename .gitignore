@@ -1,3 +1,4 @@
 # roles downloaded by ansible-galaxy cmd
 roles/cpu-ucode/*
+roles/mirrors-update/*
 
