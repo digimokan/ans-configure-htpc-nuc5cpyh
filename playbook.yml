@@ -7,6 +7,8 @@
     - name: "Configure Intel/AMD CPU-microcode updates to apply with initramfs"
       include_role:
         name: cpu-ucode
+      vars:
+        cpu_microcode_boot_dir_path: "/ROOT/default/@/boot"
     - name: "Add and configure admin group"
       include_role:
         name: admin-group
