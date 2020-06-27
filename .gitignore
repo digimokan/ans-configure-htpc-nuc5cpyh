@@ -1,2 +1,3 @@
-cpu-ucode/*
+# roles downloaded by ansible-galaxy cmd
+roles/cpu-ucode/*
 
