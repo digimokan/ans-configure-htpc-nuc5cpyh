@@ -14,7 +14,8 @@ _ansible_ script that configures an Arch Linux system for use as an
     * [Create Archiso Live USB](#create-archiso-live-usb)
     * [Install Minimal Arch Linux To HTPC](#install-minimal-arch-linux-to-htpc)
 * [Configuration Steps](#configuration-steps)
-* [Full Usage / Options](#full-usage--options)
+* [Customize Vars](#customize-vars)
+* [Available Vars](#available-vars)
 * [Source Code Layout](#source-code-layout)
 * [Contributing](#contributing)
 
@@ -82,7 +83,7 @@ for the Samsung 860 Pro at /dev/sdb:
    $ ./configure -e '{"admin_user_def_user_name":"htpc_user"}'
    ```
 
-## Full Usage / Options
+## Customize Vars
 
 Instead of specifying variables on the command line (with `-e`), you can create
 a variables file, like this example:
@@ -99,10 +100,18 @@ Then you can use `vars_file.txt` when running the playbook:
    $ ./configure -e '@vars_file.txt'
    ```
 
-See the role `vars` files for a full listing of available vars:
+## Available Vars
 
-  * [admin-group](../roles/admin-group/defaults/main.yml)
-  * [admin-user](../roles/admin-user/defaults/main.yml)
+See the role `vars` files for a full listing of available vars.
+
+### Local Roles
+
+* [admin-group](../roles/admin-group/defaults/main.yml)
+* [admin-user](../roles/admin-user/defaults/main.yml)
+
+### External/Downloaded Roles
+
+* [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode/blob/master/defaults/main.yml)
 
 ## Source Code Layout
 
