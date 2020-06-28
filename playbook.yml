@@ -11,9 +11,17 @@
         cpu_microcode_boot_dir_path: "/ROOT/default/@/boot"
     - name: "Add and configure admin group"
       include_role:
-        name: admin-group
-        public: yes
+        name: add-group
+      vars:
+        group_name: "{{ admin_group_name }}"
     - name: "Add and configure admin user"
       include_role:
-        name: admin-user
+        name: add-user
+      vars:
+        user_name: "{{ admin_user_name }}"
+        user_groups:
+          - "{{ admin_group_name }}"
+  vars:
+    admin_group_name: "admin"
+    admin_user_name: "admin"
 

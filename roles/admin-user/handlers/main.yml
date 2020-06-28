@@ -1,4 +1,0 @@
-- name: "Create new admin user, prompt for password, and set password"
-  include_tasks: new_admin_user_pass.yml
-  listen: "new admin-user password"
-

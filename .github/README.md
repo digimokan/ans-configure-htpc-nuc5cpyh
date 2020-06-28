@@ -80,7 +80,7 @@ for the Samsung 860 Pro at /dev/sdb:
 4. Run the _ansible_ configuration script (passing options to the `ansible-playbook` cmd):
 
    ```shell
-   $ ./configure -e '{"admin_user_def_user_name":"htpc_user"}'
+   $ ./configure -e '{"admin_user_name":"htpc_user"}'
    ```
 
 ## Customize Vars
@@ -90,8 +90,8 @@ a variables file, like this example:
 
    ```
    # vars_file.txt
-   admin_group_def_group_name: "admin"
-   admin_user_def_user_name: "htpc_user"
+   admin_group_name: "admin"
+   admin_user_name: "htpc_user"
    ```
 
 Then you can use `vars_file.txt` when running the playbook:
@@ -102,17 +102,17 @@ Then you can use `vars_file.txt` when running the playbook:
 
 ## Available Vars
 
-See the role `vars` files for a full listing of available vars.
+### Playbook Vars
 
-### Local Roles
+* `admin_group_name`: name of system common 'admin' group
+* `admin_user_name`: name of system 'admin' user (will be added to `admin_group_name`)
 
-* [admin-group](../roles/admin-group/defaults/main.yml)
-* [admin-user](../roles/admin-user/defaults/main.yml)
-
-### External/Downloaded Roles
+### External/Downloaded Role Vars
 
 * [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode/blob/master/defaults/main.yml)
 * [mirrors-update](https://github.com/digimokan/ans-role-update-repo-servers/blob/master/defaults/main.yml)
+* [add-group](https://github.com/digimokan/ans-role-add-group)
+* [add-user](https://github.com/digimokan/ans-role-add-user)
 
 ## Source Code Layout
 
@@ -120,8 +120,8 @@ See the role `vars` files for a full listing of available vars.
 ├─┬ ans-configure-htpc-nuc5cpyh/
 │ │
 │ ├─┬ roles/
-│ │ ├── admin-group/      # create an admin group for the system
-│ │ ├── admin-user/       # create a admin user for the system
+│ │ ├── add-group/        # create an group on the system
+│ │ ├── add-user/         # create and configure a user on the system
 │ │ ├── cpu-ucode/        # configure intel/amd cpu microcode to load at boot
 │ │ └── mirrors-update/   # update pacman mirrorlist file, if it's too old
 │ │

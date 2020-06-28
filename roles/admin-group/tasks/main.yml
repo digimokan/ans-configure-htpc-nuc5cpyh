@@ -1,7 +1,0 @@
-- name: "Add the admin group to the system, if it does not exist"
-  group:
-    name: "{{ admin_group_def_group_name }}"
-    state: present
-  become: true
-  become_user: root
-

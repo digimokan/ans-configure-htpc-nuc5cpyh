@@ -6,3 +6,11 @@
   version: master
   name: mirrors-update
 
+- src: https://github.com/digimokan/ans-role-add-group
+  version: master
+  name: add-group
+
+- src: https://github.com/digimokan/ans-role-add-user
+  version: master
+  name: add-user
+

@@ -1,7 +1,0 @@
-################################################################################
-# default variables: placeholders - should mostly override when using the role
-################################################################################
-
-# group-name of the admin group
-admin_group_def_group_name: "admin"
-
