@@ -11,8 +11,6 @@ Ansible script that configures an Arch Linux system for use as an
 * [Motivation](#motivation)
 * [Hardware](#hardware)
 * [Pre-Configuration Steps](#pre-configuration-steps)
-    1. [Create Archiso Live USB](#create-archiso-live-usb)
-    2. [Install Minimal Arch Linux To HTPC](#install-minimal-arch-linux-to-htpc)
 * [Configuration Steps](#configuration-steps)
 * [Customize Vars](#customize-vars)
 * [Available Vars](#available-vars)
@@ -32,7 +30,7 @@ Configure an Intel NUC running a minimal/base Arch Linux installation. Set up
 
 ## Pre-Configuration Steps
 
-### Create Archiso Live USB
+1. Create Archiso Live USB
 
 Create an [Archiso Live USB Stick](https://wiki.archlinux.org/index.php/USB_flash_installation_media).
 This project used [digimokan/make-archiso-zfs](https://github.com/digimokan/make-archiso-zfs)
@@ -45,7 +43,7 @@ and an empty USB flash drive at /dev/sdx:
                                 --write-iso-to-device=/dev/sdx
    ```
 
-### Install Minimal Arch Linux To HTPC
+2. Install Minimal Arch Linux To HTPC
 
 Use the Live USB stick to install a minimal, working Arch Linux to the HTPC.
 This project used [digimokan/ansible-install-arch-zfs](https://github.com/digimokan/ansible-install-arch-zfs),
