@@ -1,6 +1,6 @@
 # ans-configure-htpc-nuc5cpyh
 
-_ansible_ script that configures an Arch Linux system for use as an
+Ansible script that configures an Arch Linux system for use as an
 [HTPC](https://en.wikipedia.org/wiki/Home_theater_PC).
 
 [![Release](https://img.shields.io/github/release/digimokan/ans-configure-htpc-nuc5cpyh.svg?label=release)](https://github.com/digimokan/ans-configure-htpc-nuc5cpyh/releases/latest "Latest Release Notes")
@@ -11,8 +11,8 @@ _ansible_ script that configures an Arch Linux system for use as an
 * [Motivation](#motivation)
 * [Hardware](#hardware)
 * [Pre-Configuration Steps](#pre-configuration-steps)
-    * [Create Archiso Live USB](#create-archiso-live-usb)
-    * [Install Minimal Arch Linux To HTPC](#install-minimal-arch-linux-to-htpc)
+    1. [Create Archiso Live USB](#create-archiso-live-usb)
+    2. [Install Minimal Arch Linux To HTPC](#install-minimal-arch-linux-to-htpc)
 * [Configuration Steps](#configuration-steps)
 * [Customize Vars](#customize-vars)
 * [Available Vars](#available-vars)
