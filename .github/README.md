@@ -30,30 +30,26 @@ Configure an Intel NUC running a minimal/base Arch Linux installation. Set up
 
 ## Pre-Configuration Steps
 
-1. Create Archiso Live USB
+1. Create an [Archiso Live USB Stick](https://wiki.archlinux.org/index.php/USB_flash_installation_media).
+   This project used [digimokan/make-archiso-zfs](https://github.com/digimokan/make-archiso-zfs)
+   and an empty USB flash drive at /dev/sdx:
 
-    * Create an [Archiso Live USB Stick](https://wiki.archlinux.org/index.php/USB_flash_installation_media).
-      This project used [digimokan/make-archiso-zfs](https://github.com/digimokan/make-archiso-zfs)
-      and an empty USB flash drive at /dev/sdx:
+   ```shell
+   $ sudo ./make-archiso-zfs.sh --build-iso \
+                                --add-and-enable-stable-zfs-kernel \
+                                --extra-packages="git,ansible" \
+                                --write-iso-to-device=/dev/sdx
+   ```
 
-      ```shell
-      $ sudo ./make-archiso-zfs.sh --build-iso \
-                                    --add-and-enable-stable-zfs-kernel \
-                                    --extra-packages="git,ansible" \
-                                    --write-iso-to-device=/dev/sdx
-      ```
+2. Use the Live USB stick to install a minimal, working Arch Linux to the HTPC.
+   This project used [digimokan/ansible-install-arch-zfs](https://github.com/digimokan/ansible-install-arch-zfs),
+   for the Samsung 860 Pro at /dev/sdb:
 
-2. Install Minimal Arch Linux To HTPC
-
-    * Use the Live USB stick to install a minimal, working Arch Linux to the HTPC.
-      This project used [digimokan/ansible-install-arch-zfs](https://github.com/digimokan/ansible-install-arch-zfs),
-      for the Samsung 860 Pro at /dev/sdb:
-
-      ```shell
-      $ ansible-playbook --inventory='hosts' \
-                          --extra-vars='{"user_var_install_devices":["sdb"],"user_var_zpool_name":"htpcpool","arch_install_def_time_zone_file":"US/Central","arch_install_def_hostname":"htpc"}' \
-                          playbook.yml
-      ```
+   ```shell
+   $ ansible-playbook --inventory='hosts' \
+                      --extra-vars='{"user_var_install_devices":["sdb"],"user_var_zpool_name":"htpcpool","arch_install_def_time_zone_file":"US/Central","arch_install_def_hostname":"htpc"}' \
+                      playbook.yml
+   ```
 
 ## Configuration Steps
 
