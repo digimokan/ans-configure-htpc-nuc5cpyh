@@ -1,3 +1,7 @@
+- src: https://github.com/digimokan/ans-role-config-time
+  version: master
+  name: config-time
+
 - src: https://github.com/digimokan/ans-role-cpu-microcode
   version: master
   name: cpu-ucode
