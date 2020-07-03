@@ -14,3 +14,7 @@
   version: master
   name: add-user
 
+- src: https://github.com/digimokan/ans-role-config-sudo
+  version: master
+  name: config-sudo
+
