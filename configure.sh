@@ -8,5 +8,5 @@ ansible-galaxy role install \
   || exit 1
 
 # run the playbook, passing through args to ansible-playbook cmd
-ansible-playbook -i hosts "${@}" playbook.yml
+ansible-playbook -i hosts --ask-become-pass "${@}" playbook.yml
 
