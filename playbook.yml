@@ -29,7 +29,7 @@
         user_name: "{{ admin_user_name }}"
         user_groups:
           - "{{ admin_group_name }}"
-    # - name: "Install and configure system sudo utility"
-    #   include_role:
-    #     name: config-sudo
+    - name: "Install and configure system sudo utility"
+      include_role:
+        name: config-sudo
 
