@@ -1,6 +1,8 @@
 # roles downloaded by ansible-galaxy cmd
+roles/config-time/*
 roles/cpu-ucode/*
 roles/mirrors-update/*
 roles/add-group/*
 roles/add-user/*
+roles/config-sudo/*
 
