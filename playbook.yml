@@ -8,7 +8,7 @@
       include_role:
         name: config-time
       vars:
-        config_time_zone: "US/Central"
+        config_time_zone: "auto"
     - name: "Update pacman mirror-server-list, as required"
       include_role:
         name: mirrors-update
