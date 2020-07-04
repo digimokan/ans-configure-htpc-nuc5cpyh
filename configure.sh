@@ -3,7 +3,7 @@
 # use ansible-galaxy cmd to download roles from github/galaxy/etc
 ansible-galaxy role install \
   --role-file requirements.yml \
-  --roles-path ./roles/common \
+  --roles-path ./roles/ext \
   --force-with-deps \
   || exit 1
 

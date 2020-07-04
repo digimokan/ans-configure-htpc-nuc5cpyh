@@ -6,5 +6,5 @@
 # roles/add-user/*
 # roles/config-sudo/*
 
-roles/common/**
+roles/ext/**
 

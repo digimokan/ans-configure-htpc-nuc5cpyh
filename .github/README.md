@@ -103,10 +103,12 @@ Then you can use `vars_file.txt` when running the playbook:
 
 ### External/Downloaded Role Vars
 
-* [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode/blob/master/defaults/main.yml)
-* [mirrors-update](https://github.com/digimokan/ans-role-update-repo-servers/blob/master/defaults/main.yml)
-* [add-group](https://github.com/digimokan/ans-role-add-group)
-* [add-user](https://github.com/digimokan/ans-role-add-user)
+* [add-group](https://github.com/digimokan/ans-role-add-group#role-options)
+* [add-user](https://github.com/digimokan/ans-role-add-user#role-options)
+* [config-sudo](https://github.com/digimokan/ans-role-config-sudo#role-options)
+* [config-time](https://github.com/digimokan/ans-role-config-time#role-options)
+* [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode#role-options)
+* [mirrors-update](https://github.com/digimokan/ans-role-update-repo-servers#role-options)
 
 ## Source Code Layout
 
@@ -114,10 +116,15 @@ Then you can use `vars_file.txt` when running the playbook:
 ├─┬ ans-configure-htpc-nuc5cpyh/
 │ │
 │ ├─┬ roles/
-│ │ ├── add-group/        # create an group on the system
-│ │ ├── add-user/         # create and configure a user on the system
-│ │ ├── cpu-ucode/        # configure intel/amd cpu microcode to load at boot
-│ │ └── mirrors-update/   # update pacman mirrorlist file, if it's too old
+│ │ │
+│ │ └─┬ ext/              # external (third-party, downloaded) roles
+│ │   │
+│ │   ├── add-group/      # create an group on the system
+│ │   ├── add-user/       # create and configure a user on the system
+│ │   ├── config-sudo/    # config the system sudo utility
+│ │   ├── config-time/    # configure system clock, time, and time zone
+│ │   ├── cpu-ucode/      # configure intel/amd cpu microcode to load at boot
+│ │   └── mirrors-update/ # update pacman mirrorlist file, if it's too old
 │ │
 │ ├── ansible.cfg         # play-wide ansible meta-config
 │ ├── configure.sh        # download roles (requirements.yml), run playbook.yml
