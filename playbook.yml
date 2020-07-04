@@ -3,6 +3,7 @@
   vars:
     admin_group_name: "admin"
     admin_user_name: "admin"
+    sudo_users_group: "wheel"
   tasks:
     - name: "Configure system clock, time, and time zone"
       include_role:
@@ -32,4 +33,6 @@
     - name: "Install and configure system sudo utility"
       include_role:
         name: ext/config-sudo
+      vars:
+        config_sudo_group: "{{ sudo_users_group }}"
 
