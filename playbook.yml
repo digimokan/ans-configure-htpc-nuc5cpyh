@@ -35,5 +35,5 @@
       include_role:
         name: ext/config-sudo
       vars:
-        config_sudo_group: "{{ sudo_users_group }}"
+        sudo_users_group: "{{ sudo_users_group }}"
 
