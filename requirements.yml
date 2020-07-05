@@ -1,24 +1,26 @@
-- src: https://github.com/digimokan/ans-role-config-time
-  version: master
-  name: config-time
+roles:
 
-- src: https://github.com/digimokan/ans-role-cpu-microcode
-  version: master
-  name: cpu-ucode
+  - src: https://github.com/digimokan/ans-role-config-time
+    version: master
+    name: config-time
 
-- src: https://github.com/digimokan/ans-role-update-repo-servers
-  version: master
-  name: mirrors-update
+  - src: https://github.com/digimokan/ans-role-cpu-microcode
+    version: master
+    name: cpu-ucode
 
-- src: https://github.com/digimokan/ans-role-add-group
-  version: master
-  name: add-group
+  - src: https://github.com/digimokan/ans-role-update-repo-servers
+    version: master
+    name: mirrors-update
 
-- src: https://github.com/digimokan/ans-role-add-user
-  version: master
-  name: add-user
+  - src: https://github.com/digimokan/ans-role-add-group
+    version: master
+    name: add-group
 
-- src: https://github.com/digimokan/ans-role-config-sudo
-  version: master
-  name: config-sudo
+  - src: https://github.com/digimokan/ans-role-add-user
+    version: master
+    name: add-user
+
+  - src: https://github.com/digimokan/ans-role-config-sudo
+    version: master
+    name: config-sudo
 
