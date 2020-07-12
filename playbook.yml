@@ -3,7 +3,7 @@
   vars:
     admin_group_name: "admin"
     admin_user_name: "admin"
-    sudo_users_group: "wheel"
+    sudo_users_group_name: "wheel"
   tasks:
     - name: "Configure system clock, time, and time zone"
       include_role:
@@ -18,11 +18,17 @@
         name: ext/cpu-ucode
       vars:
         cpu_microcode_boot_dir_path: "/ROOT/default/@/boot"
-    - name: "Add and configure admin group"
+    - name: "Add admin group"
       include_role:
         name: ext/add-group
       vars:
         group_name: "{{ admin_group_name }}"
+    - name: "Add sudo-users group"
+      include_role:
+        name: ext/add-group
+      vars:
+        group_name: "{{ sudo_users_group_name }}"
+        is_system_group: true
     - name: "Add and configure admin user"
       include_role:
         name: ext/add-user
@@ -30,11 +36,12 @@
         user_name: "{{ admin_user_name }}"
         user_groups:
           - "{{ admin_group_name }}"
-          - "{{ sudo_users_group }}"
+          - "{{ sudo_users_group_name }}"
     - name: "Install and configure system sudo utility"
       include_role:
         name: ext/config-sudo
       vars:
+        sudo_users_group: "{{ sudo_users_group_name }}"
         set_full_root_authority: true
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
