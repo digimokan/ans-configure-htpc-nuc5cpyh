@@ -9,7 +9,7 @@
       include_role:
         name: ext/config-time
       vars:
-        config_time_zone: "auto"
+        time_zone_tz_name: "auto"
     - name: "Update pacman mirror-server-list, as required"
       include_role:
         name: ext/mirrors-update
@@ -17,7 +17,7 @@
       include_role:
         name: ext/cpu-ucode
       vars:
-        cpu_microcode_boot_dir_path: "/ROOT/default/@/boot"
+        boot_dir_path: "/ROOT/default/@/boot"
     - name: "Add admin group"
       include_role:
         name: ext/add-group
