@@ -38,4 +38,5 @@
         set_full_root_authority: true
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
+        use_root_umask: true
 
