@@ -46,4 +46,5 @@
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
         use_root_umask: true
+        user_for_sudo_customization: "{{ admin_user_name }}"
 
