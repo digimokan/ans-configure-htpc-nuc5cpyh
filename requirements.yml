@@ -24,3 +24,7 @@ roles:
     version: master
     name: config-sudo
 
+  - src: https://github.com/digimokan/ans-role-config-bash
+    version: master
+    name: config-bash
+

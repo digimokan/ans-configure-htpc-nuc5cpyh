@@ -47,4 +47,9 @@
         password_prompt_timeout_minutes: 0
         use_root_umask: true
         user_for_sudo_customization: "{{ admin_user_name }}"
+    - name: "Configure bash shell for interactive use"
+      include_role:
+        name: ext/config-bash
+      vars:
+        user_name: "{{ admin_user_name }}"
 
