@@ -51,5 +51,5 @@
       include_role:
         name: ext/config-bash
       vars:
-        bash_user_name: "{{ admin_user_name }}"
+        user_name: "{{ admin_user_name }}"
 
