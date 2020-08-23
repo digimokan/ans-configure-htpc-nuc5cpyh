@@ -30,16 +30,20 @@
         user_name: "{{ admin_user_and_group_name }}"
         user_groups:
           - "{{ sudo_users_group_name }}"
-    - name: "Install and configure system sudo utility"
+    - name: "Configure root-user and general system sudo settings"
       include_role:
         name: ext/config-sudo
       vars:
-        use_full_root_auth: true
-        set_auth_for_group: "{{ sudo_users_group_name }}"
+        set_auth_for_user: "root"
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
         use_root_umask: true
         user_for_sudo_aliases: "{{ admin_user_and_group_name }}"
+    - name: "Configure sudo settings for group '{{ sudo_users_group_name }}'"
+      include_role:
+        name: ext/config-sudo
+      vars:
+        set_auth_for_group: "{{ sudo_users_group_name }}"
     - name: "Configure bash shell for interactive use"
       include_role:
         name: ext/config-bash
