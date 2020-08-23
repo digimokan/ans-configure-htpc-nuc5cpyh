@@ -38,12 +38,16 @@
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
         use_root_umask: true
-        user_for_sudo_aliases: "{{ admin_user_and_group_name }}"
     - name: "Configure sudo settings for group '{{ sudo_users_group_name }}'"
       include_role:
         name: ext/config-sudo
       vars:
         set_auth_for_group: "{{ sudo_users_group_name }}"
+    - name: "Configure sudo shell enhancments for user '{{ admin_user_and_group_name }}'"
+      include_role:
+        name: ext/config-sudo
+      vars:
+        user_for_shell_enhancements: "{{ admin_user_and_group_name }}"
     - name: "Configure bash shell for interactive use"
       include_role:
         name: ext/config-bash
