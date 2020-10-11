@@ -30,11 +30,10 @@
         user_name: "{{ admin_user_and_group_name }}"
         user_groups:
           - "{{ sudo_users_group_name }}"
-    - name: "Configure root-user and general system sudo settings"
+    - name: "Configure sudo general system settings"
       include_role:
         name: ext/config-sudo
       vars:
-        set_auth_for_user: "root"
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
         use_root_umask: true
