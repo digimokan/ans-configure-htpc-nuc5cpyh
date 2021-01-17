@@ -1,9 +1,9 @@
-# ans-configure-htpc-nuc5cpyh
+# ans_pb_cfg_htpc_nuc5cpyh
 
 Ansible script that configures an Arch Linux system for use as an
 [HTPC](https://en.wikipedia.org/wiki/Home_theater_PC).
 
-[![Release](https://img.shields.io/github/release/digimokan/ans-configure-htpc-nuc5cpyh.svg?label=release)](https://github.com/digimokan/ans-configure-htpc-nuc5cpyh/releases/latest "Latest Release Notes")
+[![Release](https://img.shields.io/github/release/digimokan/ans_pb_cfg_htpc_nuc5cpyh.svg?label=release)](https://github.com/digimokan/ans_pb_cfg_htpc_nuc5cpyh/releases/latest "Latest Release Notes")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.md "Project License")
 
 ## Table Of Contents
@@ -62,13 +62,13 @@ Configure an Intel NUC running a minimal/base Arch Linux installation. Set up
 2. Clone project into a local project directory:
 
    ```shell
-   $ git clone https://github.com/digimokan/ans-configure-htpc-nuc5cpyh.git
+   $ git clone https://github.com/digimokan/ans_pb_cfg_htpc_nuc5cpyh.git
    ```
 
 3. Change to the local project directory:
 
    ```shell
-   $ cd ans-configure-htpc-nuc5cpyh
+   $ cd ans_pb_cfg_htpc_nuc5cpyh
    ```
 
 4. Run the _ansible_ configuration script (passing options to the `ansible-playbook` cmd):
@@ -103,17 +103,17 @@ Then you can use `vars_file.txt` when running the playbook:
 
 ### External/Downloaded Role Vars
 
-* [add-group](https://github.com/digimokan/ans-role-add-group#role-options)
-* [add-user](https://github.com/digimokan/ans-role-add-user#role-options)
-* [config-sudo](https://github.com/digimokan/ans-role-config-sudo#role-options)
-* [config-time](https://github.com/digimokan/ans-role-config-time#role-options)
-* [cpu-ucode](https://github.com/digimokan/ans-role-cpu-microcode#role-options)
-* [mirrors-update](https://github.com/digimokan/ans-role-update-repo-servers#role-options)
+* [ans_role_add_group](https://github.com/digimokan/ans_role_add_group#role-options)
+* [ans_role_add_user](https://github.com/digimokan/ans_role_add_user#role-options)
+* [ans_role_config_sudo](https://github.com/digimokan/ans_role_config_sudo#role-options)
+* [ans_role_config_time](https://github.com/digimokan/ans_role_config_time#role-options)
+* [ans_role_cpu_microcode](https://github.com/digimokan/ans_role_cpu_microcode#role-options)
+* [ans_role_update_repo_servers](https://github.com/digimokan/ans_role_update_repo_servers#role-options)
 
 ## Source Code Layout
 
 ```
-├─┬ ans-configure-htpc-nuc5cpyh/
+├─┬ ans_pb_cfg_htpc_nuc5cpyh/
 │ │
 │ ├─┬ roles/
 │ │ │
@@ -137,7 +137,7 @@ Then you can use `vars_file.txt` when running the playbook:
 ## Contributing
 
 * Feel free to report a bug or propose a feature by opening a new
-  [Issue](https://github.com/digimokan/ans-configure-htpc-nuc5cpyh/issues).
+  [Issue](https://github.com/digimokan/ans_pb_cfg_htpc_nuc5cpyh/issues).
 * Follow the project's [Contributing](CONTRIBUTING.md) guidelines.
 * Respect the project's [Code Of Conduct](CODE_OF_CONDUCT.md).
 
