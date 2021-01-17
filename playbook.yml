@@ -55,7 +55,6 @@
         name: ext/ans_role_pacnew_ignore
       vars:
         file_paths:
-          - "/etc/password"
           - "/etc/shadow"
           - "/etc/group"
           - "/etc/gshadow"
