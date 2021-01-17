@@ -6,5 +6,6 @@ roles:
   - src: https://github.com/digimokan/ans_role_config_sudo
   - src: https://github.com/digimokan/ans_role_config_time
   - src: https://github.com/digimokan/ans_role_cpu_microcode
+  - src: https://github.com/digimokan/ans_role_pacnew_ignore
   - src: https://github.com/digimokan/ans_role_update_repo_servers
 
