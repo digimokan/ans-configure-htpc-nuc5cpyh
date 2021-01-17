@@ -6,50 +6,61 @@
   tasks:
     - name: "Configure system clock, time, and time zone"
       include_role:
-        name: ext/config-time
-      vars:
-        time_zone_tz_name: "auto"
+        name: ext/ans_role_config_time
     - name: "Update pacman mirror-server-list, as required"
       include_role:
-        name: ext/mirrors-update
+        name: ext/ans_role_update_repo_servers
     - name: "Configure Intel/AMD CPU-microcode updates to apply with initramfs"
       include_role:
-        name: ext/cpu-ucode
+        name: ext/ans_role_cpu_microcode
       vars:
         boot_dir_path: "/ROOT/default/@/boot"
     - name: "Add sudo-users group"
       include_role:
-        name: ext/add-group
+        name: ext/ans_role_add_group
       vars:
         group_name: "{{ sudo_users_group_name }}"
         is_system_group: true
     - name: "Add and configure admin user"
       include_role:
-        name: ext/add-user
+        name: ext/ans_role_add_user
       vars:
         user_name: "{{ admin_user_and_group_name }}"
         user_groups:
           - "{{ sudo_users_group_name }}"
     - name: "Configure sudo general system settings"
       include_role:
-        name: ext/config-sudo
+        name: ext/ans_role_config_sudo
       vars:
         ask_password_timeout: 45
         password_prompt_timeout_minutes: 0
         use_root_umask: true
     - name: "Configure sudo settings for group '{{ sudo_users_group_name }}'"
       include_role:
-        name: ext/config-sudo
+        name: ext/ans_role_config_sudo
       vars:
         set_auth_for_group: "{{ sudo_users_group_name }}"
     - name: "Configure sudo shell enhancments for user '{{ admin_user_and_group_name }}'"
       include_role:
-        name: ext/config-sudo
+        name: ext/ans_role_config_sudo
       vars:
         user_for_shell_enhancements: "{{ admin_user_and_group_name }}"
     - name: "Configure bash shell for interactive use"
       include_role:
-        name: ext/config-bash
+        name: ext/ans_role_config_bash
       vars:
         user_name: "{{ admin_user_and_group_name }}"
+    - name: "Ignore select '.pacnew' files after system upgrades"
+      include_role:
+        name: ext/ans_role_pacnew_ignore
+      vars:
+        file_paths:
+          - "/etc/password"
+          - "/etc/shadow"
+          - "/etc/group"
+          - "/etc/gshadow"
+          - "/etc/fstab"
+          - "/etc/hosts"
+          - "/etc/pacman.d/mirrorlist"
+          - "/etc/locale.gen"
 
